@@ -1,4 +1,4 @@
-FROM alpine:3.14
+FROM docker:20.10.8
 
 ENV GLIBC_VER=2.31-r0
 
