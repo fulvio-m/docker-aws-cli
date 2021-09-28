@@ -3,7 +3,8 @@ FROM docker:20.10.8-alpine3.14
 ENV GLIBC_VER=2.31-r0
 
 # install glibc compatibility for alpine
-RUN apk --no-cache add \
+RUN apk del libc6-compat \
+    && apk --no-cache add \
         binutils \
         curl \
         zip \
