@@ -1,4 +1,4 @@
-FROM docker:18.06
+FROM docker:20.10.8
 
 RUN apk update && \
 apk -Uuv add zip python py-pip bash coreutils jq && \
