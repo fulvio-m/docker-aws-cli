@@ -1,4 +1,4 @@
-FROM docker:20.10.8
+FROM docker:20.10.8-alpine3.14
 
 ENV GLIBC_VER=2.31-r0
 
@@ -8,6 +8,7 @@ RUN apk --no-cache add \
         curl \
         zip \
         jq \
+        py3-pip \
     && curl -sL https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub -o /etc/apk/keys/sgerrand.rsa.pub \
     && curl -sLO https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VER}/glibc-${GLIBC_VER}.apk \
     && curl -sLO https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VER}/glibc-bin-${GLIBC_VER}.apk \
@@ -20,6 +21,7 @@ RUN apk --no-cache add \
     && curl -sL https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip \
     && unzip awscliv2.zip \
     && aws/install \
+    && pip3 install s3cmd \
     && rm -rf \
         awscliv2.zip \
         aws \
@@ -32,7 +34,3 @@ RUN apk --no-cache add \
         curl \
     && rm -rf /var/cache/apk/*
    
-#RUN apk -Uuv add py3-pip && \
-#pip3 install s3cmd && \
-#apk --purge -v del py3-pip && \
-#rm /var/cache/apk/*
