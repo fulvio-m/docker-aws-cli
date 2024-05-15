@@ -1,4 +1,4 @@
-FROM docker:20.10.16-alpine3.15
+FROM docker:26.1.2-alpine3.19
 
 ENV GLIBC_VER=2.31-r0
 
