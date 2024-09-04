@@ -11,7 +11,4 @@ RUN apk --no-cache add \
     && rm -rf /var/cache/apk/*
 
 # Install aws-sam
-RUN wget https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip && \
-          unzip aws-sam-cli-linux-x86_64.zip -d sam-installation && \
-          ./sam-installation/install && \
-          sam --version
+RUN pip install --break-system-packages aws-sam-cli
